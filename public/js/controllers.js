@@ -46,7 +46,8 @@ app.controller('mainCtrl', function($scope, $http) {
 
   $scope.submitUserForm = function(formInvalid) {
     console.log('hehehe');
-    if(formInvalid || !$scope.cardValid) {
+    // if(formInvalid || !$scope.cardValid) {
+    if(formInvalid) {
       console.log('form invalid');
       swal("Your form is invalid");
       $scope.user = {};

@@ -52,7 +52,7 @@
 
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input id="icon_telephone" type="tel" class="validate" placeholder="XXX-XXX-XXXX" ng-pattern="phoneRegex" ng-model='user.phone' name='phone'>
+          <input id="icon_telephone" type="tel" class="validate" placeholder="XXX-XXX-XXXX" ng-pattern="phoneRegex" ng-model='user.phone' name='phone'ng-class='{invalidInput: userForm.phone.$invalid && userForm.phone.$touched}'>
           <label for="icon_telephone">Telephone</label>
           <div ng-messages="userForm.phone.$error" role="alert">
             <div ng-message="pattern">
@@ -64,7 +64,7 @@
   </div>
    <div class="row">
      <div class="input-field col s6">
-         <input placeholder="Placeholder" type="text" class="validate" placeholder="Enter a password" ng-model='user.password1' ng-pattern="passwordRegex" name='password1'>
+         <input placeholder="Placeholder" type="text" class="validate" placeholder="Enter a password" ng-model='user.password1' ng-pattern="passwordRegex" name='password1' ng-class='{invalidInput: userForm.password1.$invalid && userForm.password1.$touched}'>
          <label for="first_name">Password</label>
          <div ng-messages="userForm.password1.$error" role="alert">
            <div ng-message="pattern">
