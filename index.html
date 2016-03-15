@@ -88,7 +88,7 @@
      <div class="row">
        <div class="input-field col s12">
          <i class="material-icons prefix">credit_card</i>
-         <input type="number" class="credit" placeholder="Enter credit card number" ng-model="user.credit" name="credit" ng-pattern="ccRegex" required>
+         <input type="number" class="credit" placeholder="Enter credit card number" ng-model="user.credit" name="credit" ng-pattern="ccRegex" ng-change='cardChange()' required>
          <label for="cc">Credit Card #</label>
          <div ng-messages="userForm.credit.$error" role="alert">
            <div ng-message="required">
@@ -166,6 +166,6 @@
       </div>
     </form>
   </div>
-
+<p id="disclaimer">*DISCLAIMER - Please DO NOT enter in any real credit card information into this form.</p>
 </body>
 </html>

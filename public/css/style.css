@@ -34,3 +34,7 @@ form {
 .glyphicon {
   color: red;
 }
+
+#disclaimer {
+  text-align: center;
+}

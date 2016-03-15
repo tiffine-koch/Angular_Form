@@ -3,16 +3,18 @@
 var app = angular.module('myApp');
 
 app.controller('mainCtrl', function($scope, $http) {
-  $scope.passwordRegex = /(?=.​*[0-9])(?=.*​[a-z])(?=.*[A-Z]).{6,}/;
+  $scope.users = [];
+  // console.log($scope.users);
   $scope.ccRegex = /(\d\s*){14,16}/;
   $scope.phoneRegex = /\d{3}[\-]\d{3}[\-]\d{4}/;
   $scope.zipRegex = /(\d{5})/;
   $scope.cvvRegex = /(\d{3})/;
   $scope.expRegex = /(\d{4})/;
-
+  $scope.passwordRegex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   //put into ng-patter for messages
   $scope.cardChange = function() {
-    console.log($scope.user.creditCard);
+    var credit = $scope.user.credit;
+    console.log($scope.user.credit);
     //validation
     if(credit.length > 19) {
       $scope.cardValid = false;
@@ -33,16 +35,25 @@ app.controller('mainCtrl', function($scope, $http) {
         --multiply;
       } if ((sum % 10) == 0) {
         // return true;
+        console.log('true', $scope.cardValid);
         $scope.cardValid = true;
       } else {
         // return false;
+        console.log('false', $scope.cardValid);
         $scope.cardValid = false;
       }
     }
   }
 
-  $scope.users = [];
-  console.log($scope.users);
+  $scope.submitUserForm = function(formInvalid) {
+    console.log('hehehe');
+    if(formInvalid || !valid) {
+      console.log('form invalid');
+      swal("Your form is invalid");
+    } else {
+      console.log('submit:', $scope.user);
+    }
+  };
 
   $http({
     method: "GET",
@@ -69,12 +80,5 @@ app.controller('mainCtrl', function($scope, $http) {
   }
   console.log($scope.users);
 
-  $scope.submitUserForm = function(formInvalid) {
-    console.log('hehehe');
-    if(formInvalid || !valid) {
-      console.log('form invalid');
-    } else {
-      console.log('submit:', $scope.user);
-    }
-  };
+
 })
