@@ -2,23 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Angular_Form</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="http://momentjs.com/downloads/moment.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="module.js"></script>
+  <script src="js/module.js"></script>
+  <script src="js/controllers.js"></script>
 </head>
-<body ng-app='myApp'>
+<!-- <body ng-app='myApp'> -->
+<body>
+  <div id="headline">
+    <h1>Match Me
+      <span><i class="medium droid material-icons">android</i></span>
+      <span><i class="medium material-icons">android</i></span>
+    </h1>
+    <p id="small">Meet your match (or at least a new flame).</p>
+  </div>
+  <!-- <div ng-controller='mainCtrl' class="container"> -->
+  <div class="container">
 
-  
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate" placeholder="Enter email address">
+          <label for="icon_prefix">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+          <input id="icon_telephone" type="tel" class="validate" placeholder="Enter telephone number">
+          <label for="icon_telephone">Telephone</label>
+        </div>
+      </div>
+    </form>
+  </div>
+<div class="row">
+   <form class="col s12">
+     <div class="row">
+       <div class="input-field col s6">
+         <input placeholder="Placeholder" id="first_name" type="text" class="validate" placeholder="Enter a password">
+         <label for="first_name">Password</label>
+       </div>
+       <div class="input-field col s6">
+         <input id="last_name" type="text" class="validate" placeholder="Confirm your password">
+         <label for="last_name">Password Confirmation</label>
+       </div>
+     </div>
+     <div class="row">
+       <div class="input-field col s12">
+         <input type="number" class="validate" placeholder="Enter credit card number">
+         <label for="cc">Credit Card #</label>
+       </div>
+     </div>
+      <div class="row">
+       <div class="input-field col s3">
+         <input type="number" class="validate" placeholder="Enter cc expiration">
+         <label for="cc">Expiration</label>
+       </div>
+       <div class="input-field col s3">
+         <input type="number" class="validate" placeholder="Enter cvv number">
+         <label for="cc">CVV</label>
+       </div>
+       <div class="input-field col s3">
+         <input type="text" class="validate" placeholder="Enter Country">
+         <label for="cc">Country</label>
+       </div>
+       <div class="input-field col s3">
+         <input type="number" class="validate" placeholder="Enter postal code">
+         <label for="cc">Postal Code</label>
+       </div>
+     </div>
+   </form>
+ </div>
+ <p id="options">Optional profile add ons</p>
+ <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">picture_in_picture</i>
+          <input placeholder="Enter url" id="first_name" type="text" class="validate" ng-model="upload.image">
+          <label for="">Image URL</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <input id="last_name" type="text" class="validate" ng-model="upload.desc" placeholder="...and then this happened...">
+          <label for="">Description</label>
+        </div>
+      </div>
+    </form>
+  </div>
 
 </body>
 </html>
