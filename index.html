@@ -50,80 +50,96 @@
           </div>
         </div>
 
-
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input id="icon_telephone" type="tel" class="validate" placeholder="Enter telephone number" ng-model='user.phone'>
+          <input id="icon_telephone" type="tel" class="validate" placeholder="XXX-XXX-XXXX" ng-pattern="phoneRegex" ng-model='user.phone' name='phone'>
           <label for="icon_telephone">Telephone</label>
+          <div ng-messages="userForm.phone.$error" role="alert">
+            <div ng-message="pattern">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+              Please enter a valid phone number.
+            </div>
         </div>
       </div>
   </div>
-  <div class="row">
-     <div class="row">
-       <div class="input-field col s6">
-         <span ng-show="userForm.password1.$invalid && userForm.password1.$touched" ng-message='password1'>
-         <input placeholder="Placeholder" type="text" class="validate" placeholder="Enter a password" ng-model='user.password1' ng-pattern="passwordRegex">
+   <div class="row">
+     <div class="input-field col s6">
+         <input placeholder="Placeholder" type="text" class="validate" placeholder="Enter a password" ng-model='user.password1' ng-pattern="passwordRegex" name='password1'>
          <label for="first_name">Password</label>
-         <!-- <div ng-messages="userForm.password1.$error" role="alert">
-           <div ng-message="required">
+         <div ng-messages="userForm.password1.$error" role="alert">
+           <div ng-message="pattern">
              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-             Please enter a value for this field.
-           </div> -->
-       </div>
-
-       <div class="input-field col s6">
-         <span ng-show="userPasswordConfirm !== userPassword && userForm.password2.$touched" ng-message='password2'>
-         <input type="text" class="validate" placeholder="Confirm your password" ng-model='user.password2'>
-         <label for="last_name">Password Confirmation</label>
-         <!-- <div ng-messages="userForm.password2.$error" role="alert">
-           <div ng-message="required">
-             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-             Please enter a value for this field.
+             Please enter a valid password.
            </div>
-           <div ng-message="password">
-             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-             Passwords must match.
-           </div> -->
+         </div>
+       </div>
+       <div class="input-field col s6">
+
+         <input type="text" class="validate" placeholder="Confirm your password" ng-model='user.password2' name='password2' ng-pattern="passwordRegex">
+         <label for="last_name">Password Confirmation</label>
+         <div ng-messages="userForm.password2.$error" role="alert">
+           <div ng-message="pattern">
+             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+             Please enter a valid password.
+           </div>
+         </div>
        </div>
      </div>
-
      <div class="row">
        <div class="input-field col s12">
          <i class="material-icons prefix">credit_card</i>
-         <input type="number" class="credit" placeholder="Enter credit card number" ng-model="user.credit" name="credit" ng-minlength="16" ng-maxlength="19" required>
+         <input type="number" class="credit" placeholder="Enter credit card number" ng-model="user.credit" name="credit" ng-pattern="ccRegex" required>
          <label for="cc">Credit Card #</label>
-         <!-- <div ng-messages="userForm.credit.$error" role="alert">
+         <div ng-messages="userForm.credit.$error" role="alert">
            <div ng-message="required">
              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
              Please enter a value for this field.
            </div>
-           <div ng-message="password">
+           <div ng-message="pattern">
              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
              Credit card invalid.
            </div>
-         </div> -->
+         </div>
        </div>
      </div>
 
       <div class="row">
        <div class="input-field col s3">
-         <input type="number" class="validate" placeholder="Enter mm/yy" ng-model='user.exp'>
+         <input type="number" class="validate" placeholder="Enter MMYY" ng-model='user.exp' ng-pattern="expRegex" name='exp' required>
          <label for="cc">Expiration</label>
+         <div ng-messages="userForm.exp.$error" role="alert">
+           <div ng-message="pattern">
+             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+             Please enter a valid expiration.
+           </div>
+         </div>
        </div>
        <div class="input-field col s3">
-         <input type="number" class="validate" placeholder="Enter cvv number" ng-model='user.cvv'>
+         <input type="number" name='cvv' class="validate" placeholder="Enter cvv number" ng-model='user.cvv' ng-pattern="cvvRegex" required>
          <label for="cc">CVV</label>
+         <div ng-messages="userForm.cvv.$error" role="alert">
+           <div ng-message="pattern">
+             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+             Please enter a valid cvv.
+           </div>
+         </div>
        </div>
        <div class="input-field col s3">
-         <input type="text" class="validate" placeholder="Enter Country" ng-model='user.country' min='5' max='6'>
+         <input type="text" class="validate" placeholder="Enter Country" ng-model='user.country'>
          <label for="cc">Country</label>
        </div>
        <div class="input-field col s3">
-         <input type="number" class="validate" placeholder="Enter postal code" ng-model='user.postal'>
+         <input type="number" name='postal' class="validate" placeholder="Enter postal code" ng-model='user.postal' ng-pattern="zipRegex" required>
          <label for="cc">Postal Code</label>
+         <div ng-messages="userForm.postal.$error" role="alert">
+           <div ng-message="pattern">
+             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+             Please enter a valid postal code.
+           </div>
+         </div>
        </div>
      </div>
-     <button type='submit' class="btn-floating btn-large red"><i class="large material-icons" ng-click="addUser()" ng-click="submitCC(credit)">android</i></button>
+     <button type='submit' class="btn-floating btn-large red"><i class="large material-icons" ng-click="addUser()">android</i></button>
      <p id='pText'>Click me to submit!</p>
      <br>
      <a class="waves-effect waves-light btn"><i class="material-icons left">payment</i>VISA</a>
@@ -133,9 +149,9 @@
    </form>
  </div>
 
- <p id="options">Optional profile add ons</p>
  <div class="row">
     <form class="col s12">
+      <p id="options">Optional profile add ons</p>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">picture_in_picture</i>
@@ -144,7 +160,7 @@
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">mode_edit</i>
-          <input id="last_name" type="text" class="validate" ng-model="user.desc" placeholder="Enter a short bio">
+          <input type="text" class="validate" ng-model="user.desc" placeholder="Enter a short bio">
           <label for="">All about you</label>
         </div>
       </div>
