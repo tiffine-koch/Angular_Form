@@ -28,11 +28,11 @@
   <div class="container">
 
   <div class="row">
-    <form class="col s12" name='userForm' ng-submit='submitUserForm()' autocomplete='off'>
+    <form class="col s12" name='userForm' autocomplete='off'>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="email" placeholder="Enter email address" ng-model='user.email' name='email' minlength='10' required>
+          <input id="icon_prefix" type="text" class="email" placeholder="Enter email address" ng-model='user.email' name='email' minlength='10' required           ng-class='{invalidInput: userForm.email.$invalid && userForm.email.$touched}'>
           <label for="icon_prefix">Email</label>
           <div ng-messages="userForm.email.$error" role="alert">
             <div ng-message="required">
@@ -88,7 +88,7 @@
      <div class="row">
        <div class="input-field col s12">
          <i class="material-icons prefix">credit_card</i>
-         <input type="number" class="credit" placeholder="Enter credit card number" ng-model="user.credit" name="credit" ng-pattern="ccRegex" ng-change='cardChange()' required>
+         <input type="text" class="credit" placeholder="Enter credit card number" ng-model="user.credit" name="credit" ng-pattern="ccRegex" ng-change='cardChange()' maxlength="16" minlength="14" required>
          <label for="cc">Credit Card #</label>
          <div ng-messages="userForm.credit.$error" role="alert">
            <div ng-message="required">
@@ -139,7 +139,7 @@
          </div>
        </div>
      </div>
-     <button type='submit' class="btn-floating btn-large red"><i class="large material-icons" ng-click="addUser()">android</i></button>
+     <button type='submit' class="btn-floating btn-large red"><i class="large material-icons" ng-click="submitUserForm()">android</i></button>
      <p id='pText'>Click me to submit!</p>
      <br>
      <a class="waves-effect waves-light btn"><i class="material-icons left">payment</i>VISA</a>

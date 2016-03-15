@@ -4,21 +4,19 @@ var app = angular.module('myApp');
 
 app.controller('mainCtrl', function($scope, $http) {
   $scope.users = [];
-  // console.log($scope.users);
-  $scope.ccRegex = /(\d\s*){14,16}/;
+  $scope.ccRegex = /^(\d\s*){14,16}$/;
   $scope.phoneRegex = /\d{3}[\-]\d{3}[\-]\d{4}/;
   $scope.zipRegex = /(\d{5})/;
   $scope.cvvRegex = /(\d{3})/;
   $scope.expRegex = /(\d{4})/;
   $scope.passwordRegex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  //put into ng-patter for messages
+
   $scope.cardChange = function() {
     var credit = $scope.user.credit;
+    if(!credit) return;
     console.log($scope.user.credit);
-    //validation
-    if(credit.length > 19) {
+    if(credit.length > 16) {
       $scope.cardValid = false;
-        // return false;
       }
     var multiply = 1, sum = 0;
 
@@ -29,38 +27,42 @@ app.controller('mainCtrl', function($scope, $http) {
         sum += (total % 10) + 1;
       } else {
         sum += total;
-      } if( multiply == 1) {
+      }
+      if( multiply == 1) {
         multiply++
       } else {
         --multiply;
-      } if ((sum % 10) == 0) {
-        // return true;
-        console.log('true', $scope.cardValid);
+      }
+      if ((sum % 10) == 0) {
         $scope.cardValid = true;
+        console.log('true', $scope.cardValid);
       } else {
-        // return false;
-        console.log('false', $scope.cardValid);
         $scope.cardValid = false;
+        console.log('false', $scope.cardValid);
+        return;
+        }
       }
     }
-  }
 
   $scope.submitUserForm = function(formInvalid) {
     console.log('hehehe');
-    if(formInvalid || !valid) {
+    if(formInvalid || !$scope.cardValid) {
       console.log('form invalid');
       swal("Your form is invalid");
+      $scope.user = {};
     } else {
       console.log('submit:', $scope.user);
+      $scope.addUser();
+      $scope.user = {};
     }
   };
 
   $http({
     method: "GET",
     url: "/users"
-  }).then(function(response){
-    $scope.users = response.data;
-  }, function(error){
+    }).then(function(response) {
+      $scope.users = response.data;
+    }, function(error) {
   });
 
   $scope.addUser = function() {
@@ -75,10 +77,10 @@ app.controller('mainCtrl', function($scope, $http) {
     }).then(function(response){
       swal("Your information has been uploaded!");
     }, function(error){
+      console.error(err);
     })
     $scope.user = {};
   }
   console.log($scope.users);
-
 
 })
