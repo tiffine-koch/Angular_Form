@@ -62,7 +62,7 @@
      <div class="row">
        <div class="input-field col s6">
          <span ng-show="userForm.password1.$invalid && userForm.password1.$touched" ng-message='password1'>
-         <input placeholder="Placeholder" type="text" class="validate" placeholder="Enter a password" ng-model='user.password1'>
+         <input placeholder="Placeholder" type="text" class="validate" placeholder="Enter a password" ng-model='user.password1' ng-pattern="passwordRegex">
          <label for="first_name">Password</label>
          <!-- <div ng-messages="userForm.password1.$error" role="alert">
            <div ng-message="required">
@@ -123,7 +123,7 @@
          <label for="cc">Postal Code</label>
        </div>
      </div>
-     <button type='submit' class="btn-floating btn-large red"><i class="large material-icons" ng-click="addUser()" ng-click='submitCC(credit)'>android</i></button>
+     <button type='submit' class="btn-floating btn-large red"><i class="large material-icons" ng-click="addUser()" ng-click="submitCC(credit)">android</i></button>
      <p id='pText'>Click me to submit!</p>
      <br>
      <a class="waves-effect waves-light btn"><i class="material-icons left">payment</i>VISA</a>

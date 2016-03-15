@@ -49,7 +49,7 @@ app.controller('mainCtrl', function($scope, $http) {
     var multiply = 1, sum = 0;
 
     for (var i = 0; i < credit.length; i++) {
-      var number = credit.substring(credit.length - i - 1, credit.length - 1);
+      var number = credit.substring((credit.length - i) - 1, credit.length - 1);
       var total = parseInt(number, 10) * multiply;
       if(total >=10) {
         sum += (total % 10) + 1;
