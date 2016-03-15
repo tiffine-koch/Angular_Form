@@ -1,0 +1,36 @@
+#headline {
+  background-color: #b2ebf2;
+}
+
+h1 {
+  margin-left: 30px
+}
+
+.droid {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+#options {
+  margin: 50px 0px 10px 0px;
+  color: #00e5ff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+form {
+  margin-top: 30px;
+}
+
+.waves-effect {
+  background-color: #b2ebf2;
+}
+
+#pText {
+  color: #00e5ff;
+  font-weight: bold;
+}
+
+.glyphicon {
+  color: red;
+}

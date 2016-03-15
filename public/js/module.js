@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('formApp', ['ngMessages']);
+var app = angular.module('myApp', ['ngMessages']);
